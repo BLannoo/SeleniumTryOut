@@ -30,10 +30,4 @@ public abstract class SeleniumWebDriverTest {
 	protected void goTo(NavigationConstant navigationConstant) {
 		driver.get(navigationConstant.generateUrl());
 	}
-
-	protected WebPage browseTo(WebPage webPage) {
-		webPage.sendDriver(driver);
-		webPage.assertOnPage(driver);
-		return webPage;
-	}
 }
