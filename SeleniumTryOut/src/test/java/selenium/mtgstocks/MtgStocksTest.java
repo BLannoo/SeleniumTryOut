@@ -1,7 +1,6 @@
 package selenium.mtgstocks;
 
 import io.github.bonigarcia.wdm.FirefoxDriverManager;
-import org.assertj.core.api.AbstractCharSequenceAssert;
 import org.assertj.core.api.Assertions;
 import org.junit.After;
 import org.junit.Before;
@@ -17,7 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MtgStocksTest {
 
-	protected WebDriver driver;
+	private WebDriver driver;
 
 	@BeforeClass
 	public static void setUpClass() {
@@ -35,7 +34,13 @@ public class MtgStocksTest {
 		assertTitle();
 		assertGreetingText();
 		assertNavigationBar();
+	}
+
+	@Test
+	public void setsPage() {
+		driver.get("http://www.mtgstocks.com");
 		goToSetsPage();
+		assertNumberOfSets();
 	}
 
 	private void assertTitle() {
@@ -62,6 +67,10 @@ public class MtgStocksTest {
 		webDriverWait.until(ExpectedConditions.titleIs("Sets - MTGStocks.com"));
 		Assertions.assertThat(driver.getTitle())
 				.isEqualTo("Sets - MTGStocks.com");
+	}
+
+	private void assertNumberOfSets() {
+		Assertions.assertThat(driver.findElements(By.className("list")).size()).isEqualTo(169);
 	}
 
 	@After
