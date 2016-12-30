@@ -12,6 +12,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MtgStocksTest {
 
@@ -33,6 +35,7 @@ public class MtgStocksTest {
 		assertTitle();
 		assertGreetingText();
 		assertNavigationBar();
+		goToSetsPage();
 	}
 
 	private void assertTitle() {
@@ -45,8 +48,20 @@ public class MtgStocksTest {
 	}
 
 	private void assertNavigationBar() {
-		Assertions.assertThat(driver.findElement(By.id("navbar")).getText())
+		Assertions.assertThat(findNavigationBar().getText())
 				.isEqualTo("Sets\nInterests\nAnalytics\nDecks\nAbout\nLogin\nSign up");
+	}
+
+	private WebElement findNavigationBar() {
+		return driver.findElement(By.id("navbar"));
+	}
+
+	private void goToSetsPage() {
+		findNavigationBar().findElement(By.linkText("Sets")).click();
+		WebDriverWait webDriverWait = new WebDriverWait(driver, 5);
+		webDriverWait.until(ExpectedConditions.titleIs("Sets - MTGStocks.com"));
+		Assertions.assertThat(driver.getTitle())
+				.isEqualTo("Sets - MTGStocks.com");
 	}
 
 	@After
