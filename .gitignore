@@ -1,3 +1,7 @@
+# For intellij
+.idea
+*.iml
+
 RemoteSystemsTempFiles
 .metadata
 .recommenders
