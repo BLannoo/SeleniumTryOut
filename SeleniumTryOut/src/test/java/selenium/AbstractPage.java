@@ -19,7 +19,6 @@ public abstract class AbstractPage<T extends AbstractPage> {
 
     public T browseTo() {
         driver.get(navigationConstant.getUrl());
-        assertOnPage();
         return self();
     }
 
@@ -29,11 +28,13 @@ public abstract class AbstractPage<T extends AbstractPage> {
         return self();
     }
 
-    private void assertOnPage() {
-        Assertions.assertThat(driver.getTitle()).isEqualTo(title);
+    protected T self() {
+        assertOnPage();
+        return (T) this;
     }
 
-    protected T self() {
-        return (T) this;
+    private void assertOnPage() {
+        Assertions.assertThat(driver.getCurrentUrl()).isEqualTo(navigationConstant.getUrl());
+        Assertions.assertThat(driver.getTitle()).isEqualTo(title);
     }
 }

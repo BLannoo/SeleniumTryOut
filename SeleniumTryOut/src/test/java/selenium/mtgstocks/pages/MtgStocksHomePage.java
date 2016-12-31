@@ -4,8 +4,6 @@ import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import selenium.AbstractPage;
 import selenium.NavigationConstant;
 
@@ -37,9 +35,8 @@ public class MtgStocksHomePage extends AbstractPage<MtgStocksHomePage> {
     }
 
     public MtgStocksSetsPage goToSetsPage() {
-        findNavigationBar().findElement(By.linkText("Sets")).click();
-        return new MtgStocksSetsPage(driver)
-                .waitTillOnPage();
+        WebElement SetsMenuButton = findNavigationBar().findElement(By.linkText("Sets"));
+        return MtgStocksSetsPage.createByClickingWebElement(driver, SetsMenuButton);
     }
 
     public static MtgStocksHomePage createByBrowsing(WebDriver driver) {
