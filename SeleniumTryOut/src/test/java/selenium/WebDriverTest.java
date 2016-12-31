@@ -25,8 +25,4 @@ public class WebDriverTest {
     public void tearDown() {
         driver.quit();
     }
-
-    protected <T extends AbstractPage> T browseTo(T page) {
-        return (T) page.browseTo(driver);
-    }
 }
