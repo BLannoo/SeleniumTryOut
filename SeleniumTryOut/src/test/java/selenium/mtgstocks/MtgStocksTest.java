@@ -1,36 +1,19 @@
 package selenium.mtgstocks;
 
-import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import org.assertj.core.api.Assertions;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import selenium.WebDriverTest;
+import selenium.mtgstocks.pages.MtgStocksHomePage;
 
-public class MtgStocksTest {
-
-	private WebDriver driver;
-
-	@BeforeClass
-	public static void setUpClass() {
-		FirefoxDriverManager.getInstance().setup();
-	}
-
-	@Before
-	public void setUp() {
-		driver = new FirefoxDriver();
-	}
+public class MtgStocksTest extends WebDriverTest {
 
 	@Test
 	public void homePage() {
-		driver.get("http://www.mtgstocks.com");
+		browseTo(new MtgStocksHomePage());
 		assertTitle();
 		assertGreetingText();
 		assertNavigationBar();
@@ -38,7 +21,7 @@ public class MtgStocksTest {
 
 	@Test
 	public void setsPage() {
-		driver.get("http://www.mtgstocks.com");
+		browseTo(new MtgStocksHomePage());
 		goToSetsPage();
 		assertNumberOfSets();
 	}
@@ -73,8 +56,4 @@ public class MtgStocksTest {
 		Assertions.assertThat(driver.findElements(By.className("list")).size()).isEqualTo(169);
 	}
 
-	@After
-	public void tearDown() {
-		driver.quit();
-	}
 }
