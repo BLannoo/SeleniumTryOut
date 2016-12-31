@@ -13,10 +13,16 @@ public class MtgStocksTest extends WebDriverTest {
 
 	@Test
 	public void homePage() {
-		browseTo(new MtgStocksHomePage());
-		assertTitle();
-		assertGreetingText();
-		assertNavigationBar();
+		browseTo(new MtgStocksHomePage())
+			.assertTitle("MTGStocks.com")
+			.assertGreetingText(MtgStocksHomePage.GREETING_TEXT)
+			.assertMenuHasPage("Sets")
+			.assertMenuHasPage("Interests")
+			.assertMenuHasPage("Analytics")
+			.assertMenuHasPage("Decks")
+			.assertMenuHasPage("About")
+			.assertMenuHasPage("Login")
+			.assertMenuHasPage("Sign up");
 	}
 
 	@Test
@@ -24,20 +30,6 @@ public class MtgStocksTest extends WebDriverTest {
 		browseTo(new MtgStocksHomePage());
 		goToSetsPage();
 		assertNumberOfSets();
-	}
-
-	private void assertTitle() {
-		Assertions.assertThat(driver.getTitle()).isEqualTo("MTGStocks.com");
-	}
-
-	private void assertGreetingText() {
-		Assertions.assertThat(driver.findElement(By.xpath("//div[@class='jumbotron']/p")).getText())
-				.isEqualTo("Your favorite resource for daily price updates on Magic: the Gathering cards. We track prices of all cards and report the ones that have recently fluctuated the most for your Magic finance convenience!");
-	}
-
-	private void assertNavigationBar() {
-		Assertions.assertThat(findNavigationBar().getText())
-				.isEqualTo("Sets\nInterests\nAnalytics\nDecks\nAbout\nLogin\nSign up");
 	}
 
 	private WebElement findNavigationBar() {
