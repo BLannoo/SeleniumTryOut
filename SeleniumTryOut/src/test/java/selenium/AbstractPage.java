@@ -4,17 +4,14 @@ import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import selenium.mtgstocks.pages.MtgStocksSetsPage;
 
 public abstract class AbstractPage<T extends AbstractPage> {
     private final NavigationConstant navigationConstant;
-    private String title;
     protected WebDriver driver;
 
-    public AbstractPage(WebDriver driver, NavigationConstant navigationConstant, String title) {
+    public AbstractPage(WebDriver driver, NavigationConstant navigationConstant) {
         this.driver = driver;
         this.navigationConstant = navigationConstant;
-        this.title = title;
     }
 
     public T browseTo() {
@@ -24,7 +21,7 @@ public abstract class AbstractPage<T extends AbstractPage> {
 
     public T waitTillOnPage() {
         WebDriverWait webDriverWait = new WebDriverWait(driver, 5);
-        webDriverWait.until(ExpectedConditions.titleIs(title));
+        webDriverWait.until(ExpectedConditions.urlToBe(navigationConstant.getUrl()));
         return self();
     }
 
@@ -35,6 +32,10 @@ public abstract class AbstractPage<T extends AbstractPage> {
 
     private void assertOnPage() {
         Assertions.assertThat(driver.getCurrentUrl()).isEqualTo(navigationConstant.getUrl());
+    }
+
+    public T assertTitle(String title) {
         Assertions.assertThat(driver.getTitle()).isEqualTo(title);
+        return self();
     }
 }

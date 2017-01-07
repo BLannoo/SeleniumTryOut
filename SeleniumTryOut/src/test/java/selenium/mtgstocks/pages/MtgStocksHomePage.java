@@ -13,19 +13,19 @@ import selenium.NavigationConstant;
 
 public class MtgStocksHomePage extends AbstractPage<MtgStocksHomePage> {
 
+    public static final String GREETING_TEXT
+            = "Your favorite resource for daily price updates on Magic: the Gathering cards. " +
+            "We track prices of all cards and report the ones that " +
+            "have recently fluctuated the most for your Magic finance convenience!";
+
     @FindBy(id = "navbar")
     private WebElement navBar;
 
     @FindBy(xpath = "//div[@class='jumbotron']/p")
     private WebElement greeting;
 
-    public static final String GREETING_TEXT
-            = "Your favorite resource for daily price updates on Magic: the Gathering cards. " +
-            "We track prices of all cards and report the ones that " +
-            "have recently fluctuated the most for your Magic finance convenience!";
-
     private MtgStocksHomePage(WebDriver driver) {
-        super(driver, NavigationConstant.MTG_STOCKS_HOME_PAGE, "MTGStocks.com");
+        super(driver, NavigationConstant.MTG_STOCKS_HOME_PAGE);
     }
 
     public MtgStocksHomePage assertGreetingText(String greetingText) {

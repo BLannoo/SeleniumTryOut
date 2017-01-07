@@ -9,6 +9,7 @@ public class MtgStocksTest extends WebDriverTest {
 	@Test
 	public void homePage() {
 		MtgStocksHomePage.createByBrowsing(driver)
+			.assertTitle("MTGStocks.com")
 			.assertGreetingText(MtgStocksHomePage.GREETING_TEXT)
 			.assertHasMenuTowards("Sets")
 			.assertHasMenuTowards("Interests")
@@ -23,6 +24,7 @@ public class MtgStocksTest extends WebDriverTest {
 	public void setsPage() {
 		MtgStocksHomePage.createByBrowsing(driver)
 			.goToSetsPage()
+			.assertTitle("Sets - MTGStocks.com")
 			.assertNumberOfSets(169);
 	}
 }
