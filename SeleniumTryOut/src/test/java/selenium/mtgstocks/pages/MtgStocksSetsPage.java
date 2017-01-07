@@ -20,7 +20,9 @@ public class MtgStocksSetsPage extends AbstractPage<MtgStocksSetsPage> {
 
     public static MtgStocksSetsPage createByClickingWebElement(WebDriver driver, WebElement elementToClick) {
         elementToClick.click();
-        return new MtgStocksSetsPage(driver)
+        MtgStocksSetsPage mtgStocksSetsPage = new MtgStocksSetsPage(driver)
                 .waitTillOnPage();
+        initWebElements(driver, mtgStocksSetsPage);
+        return mtgStocksSetsPage;
     }
 }
