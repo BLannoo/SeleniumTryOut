@@ -1,4 +1,4 @@
-package selenium.framework;
+package selenium.pageAccessAction;
 
 public interface PageAccessAction {
     void execute();

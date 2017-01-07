@@ -1,4 +1,4 @@
-package selenium.framework;
+package selenium.pageAccessAction;
 
 import selenium.Browser;
 import selenium.NavigationConstant;

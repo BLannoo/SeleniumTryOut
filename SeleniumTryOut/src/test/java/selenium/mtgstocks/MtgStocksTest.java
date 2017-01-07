@@ -4,7 +4,7 @@ import org.junit.Test;
 import selenium.Browser;
 import selenium.NavigationConstant;
 import selenium.WebDriverTest;
-import selenium.framework.BrowsingToPageAction;
+import selenium.pageAccessAction.BrowsingToPageAction;
 import selenium.mtgstocks.pages.MtgStocksHomePage;
 
 public class MtgStocksTest extends WebDriverTest {

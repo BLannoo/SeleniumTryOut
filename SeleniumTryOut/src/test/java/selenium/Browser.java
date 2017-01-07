@@ -6,8 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
-import selenium.framework.BrowsingToPageAction;
-import selenium.framework.PageAccessAction;
+import selenium.pageAccessAction.PageAccessAction;
 
 public class Browser {
 

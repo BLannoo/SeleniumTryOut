@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import selenium.AbstractPage;
 import selenium.Browser;
 import selenium.NavigationConstant;
-import selenium.framework.ClickToAccessPageAction;
+import selenium.pageAccessAction.ClickToAccessPageAction;
 
 public class MtgStocksHomePage extends AbstractPage<MtgStocksHomePage> {
 
