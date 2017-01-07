@@ -5,9 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
-import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import selenium.AbstractPage;
 import selenium.NavigationConstant;
 
@@ -45,8 +42,7 @@ public class MtgStocksHomePage extends AbstractPage<MtgStocksHomePage> {
 
     public static MtgStocksHomePage createByBrowsing(WebDriver driver) {
         MtgStocksHomePage mtgStocksHomePage = new MtgStocksHomePage(driver).browseTo();
-        ElementLocatorFactory finder = new AjaxElementLocatorFactory(driver, 5);
-        PageFactory.initElements(finder, mtgStocksHomePage);
+        initWebElements(driver, mtgStocksHomePage);
         return mtgStocksHomePage;
     }
 }
