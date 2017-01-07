@@ -2,11 +2,11 @@ package selenium.mtgstocks.pages;
 
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import selenium.AbstractPage;
 import selenium.NavigationConstant;
+import selenium.framework.ClickToAccessPageAction;
 
 public class MtgStocksHomePage extends AbstractPage<MtgStocksHomePage> {
 
@@ -35,14 +35,8 @@ public class MtgStocksHomePage extends AbstractPage<MtgStocksHomePage> {
         return self();
     }
 
-    public MtgStocksSetsPage goToSetsPage() {
+    public ClickToAccessPageAction createGoToSetsPageAction() {
         WebElement SetsMenuButton = navBar.findElement(By.linkText("Sets"));
-        return MtgStocksSetsPage.createByClickingWebElement(driver, SetsMenuButton);
-    }
-
-    public static MtgStocksHomePage createByBrowsing(WebDriver driver) {
-        MtgStocksHomePage mtgStocksHomePage = new MtgStocksHomePage().browseTo();
-        initWebElements(driver, mtgStocksHomePage);
-        return mtgStocksHomePage;
+        return new ClickToAccessPageAction(SetsMenuButton);
     }
 }

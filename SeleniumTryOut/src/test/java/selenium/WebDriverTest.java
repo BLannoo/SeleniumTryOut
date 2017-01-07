@@ -1,7 +1,6 @@
 package selenium;
 
 import io.github.bonigarcia.wdm.FirefoxDriverManager;
-import org.assertj.core.api.Assertions;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -39,7 +38,8 @@ public class WebDriverTest {
     protected <PAGE extends AbstractPage<PAGE>> PAGE goTo(Class<PAGE> pageClass, PageAccessAction pageAccessAction) {
         pageAccessAction.execute();
         PAGE page = createInstanceOfPage(pageClass);
-        page.assertOnPage(driver);
+
+        page.waitTillOnPage(driver);
         initWebElements(page);
         return page;
     }

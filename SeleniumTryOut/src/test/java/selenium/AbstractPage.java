@@ -46,7 +46,8 @@ public abstract class AbstractPage<T extends AbstractPage> {
         return self();
     }
 
-    public void assertOnPage(WebDriver driver) {
-        Assertions.assertThat(driver.getCurrentUrl()).isEqualTo(navigationConstant.getUrl());
+    public void waitTillOnPage(WebDriver driver) {
+        WebDriverWait webDriverWait = new WebDriverWait(driver, 5);
+        webDriverWait.until(ExpectedConditions.urlToBe(navigationConstant.getUrl()));
     }
 }
