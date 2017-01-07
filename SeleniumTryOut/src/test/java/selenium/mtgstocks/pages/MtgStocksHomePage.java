@@ -4,10 +4,20 @@ import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import selenium.AbstractPage;
 import selenium.NavigationConstant;
 
 public class MtgStocksHomePage extends AbstractPage<MtgStocksHomePage> {
+
+    @FindBy(id = "navbar")
+    private WebElement navBar;
+
+    @FindBy(xpath = "//div[@class='jumbotron']/p")
+    private WebElement greeting;
 
     public static final String GREETING_TEXT
             = "Your favorite resource for daily price updates on Magic: the Gathering cards. " +
@@ -19,27 +29,24 @@ public class MtgStocksHomePage extends AbstractPage<MtgStocksHomePage> {
     }
 
     public MtgStocksHomePage assertGreetingText(String greetingText) {
-        Assertions.assertThat(driver.findElement(By.xpath("//div[@class='jumbotron']/p")).getText())
-                .isEqualTo(greetingText);
+        Assertions.assertThat(greeting.getText()).isEqualTo(greetingText);
         return self();
     }
 
     public MtgStocksHomePage assertHasMenuTowards(String menuName) {
-        WebElement navbar = findNavigationBar();
-        Assertions.assertThat(navbar.findElements(By.xpath("//a[contains(text(),'" + menuName +"')]"))).isNotEmpty();
+        Assertions.assertThat(navBar.findElements(By.xpath("//a[contains(text(),'" + menuName +"')]"))).isNotEmpty();
         return self();
     }
 
-    private WebElement findNavigationBar() {
-        return driver.findElement(By.id("navbar"));
-    }
-
     public MtgStocksSetsPage goToSetsPage() {
-        WebElement SetsMenuButton = findNavigationBar().findElement(By.linkText("Sets"));
+        WebElement SetsMenuButton = navBar.findElement(By.linkText("Sets"));
         return MtgStocksSetsPage.createByClickingWebElement(driver, SetsMenuButton);
     }
 
     public static MtgStocksHomePage createByBrowsing(WebDriver driver) {
-        return new MtgStocksHomePage(driver).browseTo();
+        MtgStocksHomePage mtgStocksHomePage = new MtgStocksHomePage(driver).browseTo();
+        ElementLocatorFactory finder = new AjaxElementLocatorFactory(driver, 5);
+        PageFactory.initElements(finder, mtgStocksHomePage);
+        return mtgStocksHomePage;
     }
 }
