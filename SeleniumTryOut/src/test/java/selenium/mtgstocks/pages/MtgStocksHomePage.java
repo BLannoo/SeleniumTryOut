@@ -21,8 +21,8 @@ public class MtgStocksHomePage extends AbstractPage<MtgStocksHomePage> {
     @FindBy(xpath = "//div[@class='jumbotron']/p")
     private WebElement greeting;
 
-    private MtgStocksHomePage(WebDriver driver) {
-        super(driver, NavigationConstant.MTG_STOCKS_HOME_PAGE);
+    public MtgStocksHomePage() {
+        super(NavigationConstant.MTG_STOCKS_HOME_PAGE);
     }
 
     public MtgStocksHomePage assertGreetingText(String greetingText) {
@@ -41,7 +41,7 @@ public class MtgStocksHomePage extends AbstractPage<MtgStocksHomePage> {
     }
 
     public static MtgStocksHomePage createByBrowsing(WebDriver driver) {
-        MtgStocksHomePage mtgStocksHomePage = new MtgStocksHomePage(driver).browseTo();
+        MtgStocksHomePage mtgStocksHomePage = new MtgStocksHomePage().browseTo();
         initWebElements(driver, mtgStocksHomePage);
         return mtgStocksHomePage;
     }

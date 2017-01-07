@@ -17,8 +17,7 @@ public abstract class AbstractPage<T extends AbstractPage> {
     @FindBy(xpath = "//title")
     private WebElement titleElement;
 
-    public AbstractPage(WebDriver driver, NavigationConstant navigationConstant) {
-        this.driver = driver;
+    public AbstractPage(NavigationConstant navigationConstant) {
         this.navigationConstant = navigationConstant;
     }
 
@@ -39,12 +38,7 @@ public abstract class AbstractPage<T extends AbstractPage> {
     }
 
     protected T self() {
-        assertOnPage();
         return (T) this;
-    }
-
-    private void assertOnPage() {
-        Assertions.assertThat(driver.getCurrentUrl()).isEqualTo(navigationConstant.getUrl());
     }
 
     public T assertTitle(String title) {

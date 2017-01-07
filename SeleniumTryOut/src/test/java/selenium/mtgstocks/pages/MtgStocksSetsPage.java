@@ -10,7 +10,7 @@ import selenium.NavigationConstant;
 public class MtgStocksSetsPage extends AbstractPage<MtgStocksSetsPage> {
 
     private MtgStocksSetsPage(WebDriver driver) {
-        super(driver, NavigationConstant.MTG_STOCKS_SETS_PAGE);
+        super(NavigationConstant.MTG_STOCKS_SETS_PAGE);
     }
 
     public MtgStocksSetsPage assertNumberOfSets(int numberOfSets) {

@@ -23,7 +23,7 @@ public class MtgStocksTest extends WebDriverTest {
 
 	@Test
 	public void setsPage() {
-		MtgStocksHomePage.createByBrowsing(driver)
+		goTo(MtgStocksHomePage.class, byBrowsingTo(NavigationConstant.MTG_STOCKS_HOME_PAGE))
 			.goToSetsPage()
 			.assertTitle("Sets - MTGStocks.com")
 			.assertNumberOfSets(169);
