@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractPage<T extends AbstractPage> {
+
     private final NavigationConstant navigationConstant;
 
     @FindBy(xpath = "//title")
@@ -27,7 +28,7 @@ public abstract class AbstractPage<T extends AbstractPage> {
     }
 
     public void waitTillOnPage(WebDriver driver) {
-        WebDriverWait webDriverWait = new WebDriverWait(driver, 5);
+        WebDriverWait webDriverWait = new WebDriverWait(driver, Browser.TIME_OUT_IN_SECONDS_WHEN_WAITING_FOR_DRIVER);
         webDriverWait.until(ExpectedConditions.urlToBe(navigationConstant.getUrl()));
     }
 }

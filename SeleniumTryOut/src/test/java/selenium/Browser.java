@@ -10,6 +10,8 @@ import selenium.pageAccessAction.PageAccessAction;
 
 public class Browser {
 
+    public static final int TIME_OUT_IN_SECONDS_WHEN_WAITING_FOR_DRIVER = 10;
+
     private static WebDriver driver;
 
     public static void setUp() {
@@ -24,10 +26,6 @@ public class Browser {
         driver.quit();
     }
 
-    public static void browseTo(NavigationConstant navigationConstant) {
-        driver.get(navigationConstant.getUrl());
-    }
-
     public static <PAGE extends AbstractPage<PAGE>> PAGE goTo(Class<PAGE> pageClass, PageAccessAction pageAccessAction) {
         pageAccessAction.execute();
         PAGE page = createInstanceOfPage(pageClass);
@@ -37,7 +35,7 @@ public class Browser {
     }
 
     private static <PAGE extends AbstractPage<PAGE>> void initWebElements(PAGE page) {
-        ElementLocatorFactory finder = new AjaxElementLocatorFactory(driver, 5);
+        ElementLocatorFactory finder = new AjaxElementLocatorFactory(driver, TIME_OUT_IN_SECONDS_WHEN_WAITING_FOR_DRIVER);
         PageFactory.initElements(finder, page);
     }
 
@@ -49,5 +47,21 @@ public class Browser {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+    }
+    
+    public static class BrowsingToPageAction implements PageAccessAction {
+        private final NavigationConstant navigationConstant;
+
+        public BrowsingToPageAction(NavigationConstant navigationConstant) {
+            this.navigationConstant = navigationConstant;
+        }
+
+        public void execute() {
+            Browser.browseTo(navigationConstant);
+        }
+    }
+
+    private static void browseTo(NavigationConstant navigationConstant) {
+        driver.get(navigationConstant.getUrl());
     }
 }
