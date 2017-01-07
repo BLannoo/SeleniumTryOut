@@ -25,14 +25,9 @@ public class Browser {
         driver.quit();
     }
 
-    public static PageAccessAction byBrowsingTo(NavigationConstant navigationConstant) {
-        return new BrowsingToPageAction(driver, navigationConstant);
-    }
-
     public static <PAGE extends AbstractPage<PAGE>> PAGE goTo(Class<PAGE> pageClass, PageAccessAction pageAccessAction) {
         pageAccessAction.execute();
         PAGE page = createInstanceOfPage(pageClass);
-
         page.waitTillOnPage(driver);
         initWebElements(page);
         return page;
@@ -43,7 +38,7 @@ public class Browser {
         PageFactory.initElements(finder, page);
     }
 
-    private static <PAGE> PAGE createInstanceOfPage(Class<PAGE> pageClass) {
+    private static <PAGE extends AbstractPage<PAGE>> PAGE createInstanceOfPage(Class<PAGE> pageClass) {
         try {
             return pageClass.newInstance();
         } catch (InstantiationException e) {
@@ -51,5 +46,9 @@ public class Browser {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void browseTo(String url) {
+        driver.get(url);
     }
 }
