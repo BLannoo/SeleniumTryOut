@@ -13,7 +13,7 @@ import java.util.List;
 
 public class MtgStocksSetsPage extends AbstractPage<MtgStocksSetsPage> {
 
-    @FindBy(xpath = "//li[@class='list']")
+    @FindBy(className = "list")
     private List<WebElement> allLists;
 
     public MtgStocksSetsPage() {

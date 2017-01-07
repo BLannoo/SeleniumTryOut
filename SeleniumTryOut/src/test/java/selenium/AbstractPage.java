@@ -12,29 +12,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractPage<T extends AbstractPage> {
     private final NavigationConstant navigationConstant;
-    protected WebDriver driver;
 
     @FindBy(xpath = "//title")
     private WebElement titleElement;
 
     public AbstractPage(NavigationConstant navigationConstant) {
         this.navigationConstant = navigationConstant;
-    }
-
-    protected static void initWebElements(WebDriver driver, AbstractPage mtgStocksHomePage) {
-        ElementLocatorFactory finder = new AjaxElementLocatorFactory(driver, 5);
-        PageFactory.initElements(finder, mtgStocksHomePage);
-    }
-
-    public T browseTo() {
-        driver.get(navigationConstant.getUrl());
-        return self();
-    }
-
-    public T waitTillOnPage() {
-        WebDriverWait webDriverWait = new WebDriverWait(driver, 5);
-        webDriverWait.until(ExpectedConditions.urlToBe(navigationConstant.getUrl()));
-        return self();
     }
 
     protected T self() {
