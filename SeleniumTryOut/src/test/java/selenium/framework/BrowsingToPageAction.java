@@ -11,6 +11,6 @@ public class BrowsingToPageAction implements PageAccessAction {
     }
 
     public void execute() {
-        Browser.browseTo(navigationConstant.getUrl());
+        Browser.browseTo(navigationConstant);
     }
 }

@@ -25,6 +25,10 @@ public class Browser {
         driver.quit();
     }
 
+    public static void browseTo(NavigationConstant navigationConstant) {
+        driver.get(navigationConstant.getUrl());
+    }
+
     public static <PAGE extends AbstractPage<PAGE>> PAGE goTo(Class<PAGE> pageClass, PageAccessAction pageAccessAction) {
         pageAccessAction.execute();
         PAGE page = createInstanceOfPage(pageClass);
@@ -46,9 +50,5 @@ public class Browser {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public static void browseTo(String url) {
-        driver.get(url);
     }
 }
