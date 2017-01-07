@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import selenium.AbstractPage;
+import selenium.Browser;
 import selenium.NavigationConstant;
 import selenium.framework.ClickToAccessPageAction;
 
@@ -35,8 +36,9 @@ public class MtgStocksHomePage extends AbstractPage<MtgStocksHomePage> {
         return self();
     }
 
-    public ClickToAccessPageAction createGoToSetsPageAction() {
+    public MtgStocksSetsPage goToSetsPage() {
         WebElement SetsMenuButton = navBar.findElement(By.linkText("Sets"));
-        return new ClickToAccessPageAction(SetsMenuButton);
+        ClickToAccessPageAction goToSetsPageAction = new ClickToAccessPageAction(SetsMenuButton);
+        return Browser.goTo(MtgStocksSetsPage.class, goToSetsPageAction);
     }
 }
