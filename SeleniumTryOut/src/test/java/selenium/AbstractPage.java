@@ -38,4 +38,8 @@ public abstract class AbstractPage<T extends AbstractPage> {
         Assertions.assertThat(driver.getTitle()).isEqualTo(title);
         return self();
     }
+
+    public void assertOnPage(WebDriver driver) {
+        Assertions.assertThat(driver.getCurrentUrl()).isEqualTo(navigationConstant.getUrl());
+    }
 }

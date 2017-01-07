@@ -1,6 +1,7 @@
 package selenium.mtgstocks;
 
 import org.junit.Test;
+import selenium.NavigationConstant;
 import selenium.WebDriverTest;
 import selenium.mtgstocks.pages.MtgStocksHomePage;
 
@@ -8,7 +9,7 @@ public class MtgStocksTest extends WebDriverTest {
 
 	@Test
 	public void homePage() {
-		MtgStocksHomePage.createByBrowsing(driver)
+		goTo(MtgStocksHomePage.class, byBrowsingTo(NavigationConstant.MTG_STOCKS_HOME_PAGE))
 			.assertTitle("MTGStocks.com")
 			.assertGreetingText(MtgStocksHomePage.GREETING_TEXT)
 			.assertHasMenuTowards("Sets")
