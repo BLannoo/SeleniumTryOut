@@ -11,10 +11,10 @@ public class MtgGathererTest extends WebDriverTest {
     @Test
     public void simpleSearch() {
         Browser.goTo(MtgGathererSearchPage.class, new Browser.BrowsingToPageAction(NavigationConstant.MTG_GATHERER_SEARCH_PAGE))
-            .assertTitle("Gatherer - Magic: The Gathering")
+            .assertPageTitle("Gatherer - Magic: The Gathering")
             .enterSearchTerm("elf")
             .submitSearch()
-            .assertTitle("Card Search - Search: +elf - Gatherer - Magic: The Gathering")
+            .assertPageTitle("Card Search - Search: +elf - Gatherer - Magic: The Gathering")
             .assertResultCard(1,"Angelfire Crusader")
             .assertResultCard(2,"Arbor Elf");
     }

@@ -20,7 +20,7 @@ public abstract class AbstractPage<T extends AbstractPage> {
         return (T) this;
     }
 
-    public T assertTitle(String title) {
+    public T assertPageTitle(String title) {
         Assertions.assertThat(titleElement.getText()).isEqualTo(title);
         return self();
     }

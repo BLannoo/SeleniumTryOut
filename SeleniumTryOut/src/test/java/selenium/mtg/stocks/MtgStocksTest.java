@@ -11,7 +11,7 @@ public class MtgStocksTest extends WebDriverTest {
     @Test
     public void homePage() {
         Browser.goTo(MtgStocksHomePage.class, new Browser.BrowsingToPageAction(NavigationConstant.MTG_STOCKS_HOME_PAGE))
-                .assertTitle("MTGStocks.com")
+                .assertPageTitle("MTGStocks.com")
                 .assertGreetingText(MtgStocksHomePage.GREETING_TEXT)
                 .assertHasMenuTowards("Sets")
                 .assertHasMenuTowards("Interests")
@@ -26,7 +26,7 @@ public class MtgStocksTest extends WebDriverTest {
     public void setsPage() {
         Browser.goTo(MtgStocksHomePage.class, new Browser.BrowsingToPageAction(NavigationConstant.MTG_STOCKS_HOME_PAGE))
                 .goToSetsPage()
-                .assertTitle("Sets - MTGStocks.com")
+                .assertPageTitle("Sets - MTGStocks.com")
                 .assertNumberOfSets(169);
     }
 }
