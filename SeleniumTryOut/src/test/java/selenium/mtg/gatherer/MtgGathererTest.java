@@ -14,6 +14,8 @@ public class MtgGathererTest extends WebDriverTest {
             .assertTitle("Gatherer - Magic: The Gathering")
             .enterSearchTerm("elf")
             .submitSearch()
-            .assertTitle("Card Search - Search: +elf - Gatherer - Magic: The Gathering");
+            .assertTitle("Card Search - Search: +elf - Gatherer - Magic: The Gathering")
+            .assertResultCard(1,"Angelfire Crusader")
+            .assertResultCard(2,"Arbor Elf");
     }
 }
