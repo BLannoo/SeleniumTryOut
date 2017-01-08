@@ -6,6 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import selenium.framework.pageAccessAction.PageAccessAction;
 
@@ -27,17 +28,17 @@ public class Browser {
         driver.quit();
     }
 
+    public static void waitUntill(ExpectedCondition<Boolean> condition) {
+        new WebDriverWait(driver, TIME_OUT_IN_SECONDS_WHEN_WAITING_FOR_DRIVER)
+                .until(condition);
+    }
+
     public static <PAGE extends AbstractPage<PAGE>> PAGE goTo(Class<PAGE> pageClass, PageAccessAction pageAccessAction) {
         pageAccessAction.execute();
         PAGE page = createInstanceOfPage(pageClass);
-        waitTillOnPage(page);
+        page.waitTillOnPage();
         initWebElements(page);
         return page;
-    }
-
-    private static <PAGE extends AbstractPage<PAGE>> void waitTillOnPage(PAGE page) {
-        WebDriverWait webDriverWait = new WebDriverWait(driver, TIME_OUT_IN_SECONDS_WHEN_WAITING_FOR_DRIVER);
-        page.waitTillOnPage(webDriverWait);
     }
 
     private static <PAGE extends AbstractPage<PAGE>> void initWebElements(PAGE page) {
@@ -54,7 +55,7 @@ public class Browser {
             throw new RuntimeException(e);
         }
     }
-    
+
     public static class BrowsingToPageAction implements PageAccessAction {
         private final NavigationConstant navigationConstant;
 

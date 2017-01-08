@@ -1,11 +1,9 @@
 package selenium.framework;
 
 import org.assertj.core.api.Assertions;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractPage<T extends AbstractPage> {
 
@@ -27,7 +25,7 @@ public abstract class AbstractPage<T extends AbstractPage> {
         return self();
     }
 
-    public void waitTillOnPage(WebDriverWait webDriverWait) {
-        webDriverWait.until(ExpectedConditions.urlToBe(navigationConstant.getUrl()));
+    public void waitTillOnPage() {
+        Browser.waitUntill(ExpectedConditions.urlToBe(navigationConstant.getUrl()));
     }
 }
