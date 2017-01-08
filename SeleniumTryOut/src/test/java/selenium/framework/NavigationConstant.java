@@ -4,15 +4,15 @@ public enum NavigationConstant {
     MTG_STOCKS_HOME_PAGE("http://www.mtgstocks.com/"),
     MTG_STOCKS_SETS_PAGE("http://www.mtgstocks.com/sets"),
     MTG_GATHERER_SEARCH_PAGE("http://gatherer.wizards.com/Pages/Default.aspx"),
-    MTG_GATHERER_RESULT_PAGE("http://gatherer.wizards.com/Pages/Search/Default.aspx?name=+[elf]");
+    MTG_GATHERER_RESULT_PAGE("http://gatherer.wizards.com/Pages/Search/Default.aspx?.*");
 
-    private final String url;
+    private final String urlRegex;
 
-    NavigationConstant(String url) {
-        this.url = url;
+    NavigationConstant(String urlRegex) {
+        this.urlRegex = urlRegex;
     }
 
-    public String getUrl() {
-        return url;
+    public String getUrlRegex() {
+        return urlRegex;
     }
 }

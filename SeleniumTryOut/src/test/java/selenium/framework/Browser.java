@@ -69,6 +69,6 @@ public class Browser {
     }
 
     private static void browseTo(NavigationConstant navigationConstant) {
-        driver.get(navigationConstant.getUrl());
+        driver.get(navigationConstant.getUrlRegex());
     }
 }

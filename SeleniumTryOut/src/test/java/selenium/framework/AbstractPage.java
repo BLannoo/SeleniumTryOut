@@ -26,6 +26,6 @@ public abstract class AbstractPage<T extends AbstractPage> {
     }
 
     public void waitTillOnPage() {
-        Browser.waitUntill(ExpectedConditions.urlToBe(navigationConstant.getUrl()));
+        Browser.waitUntill(ExpectedConditions.urlMatches(navigationConstant.getUrlRegex()));
     }
 }
