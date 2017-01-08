@@ -15,6 +15,9 @@ public class MtgGathererSearchPage extends AbstractPage<MtgGathererSearchPage> {
     @FindBy(id = "ctl00_ctl00_MainContent_Content_SearchControls_searchSubmitButton")
     private WebElement submitButton;
 
+    @FindBy(xpath = "//label[@for='ctl00_ctl00_MainContent_Content_SearchControls_SearchCardTypes']")
+    private WebElement typeSearchCheckBox;
+
     public MtgGathererSearchPage() {
         super(NavigationConstant.MTG_GATHERER_SEARCH_PAGE);
     }
@@ -28,5 +31,10 @@ public class MtgGathererSearchPage extends AbstractPage<MtgGathererSearchPage> {
     public MtgGathererResultPage submitSearch() {
         ClickToAccessPageAction submitSearchAction = new ClickToAccessPageAction(submitButton);
         return Browser.goTo(MtgGathererResultPage.class, submitSearchAction);
+    }
+
+    public MtgGathererSearchPage selectTypeSearch() {
+        typeSearchCheckBox.click();
+        return self();
     }
 }

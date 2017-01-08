@@ -9,13 +9,26 @@ import selenium.mtg.gatherer.pages.MtgGathererSearchPage;
 public class MtgGathererTest extends WebDriverTest {
 
     @Test
-    public void simpleSearch() {
-        Browser.goTo(MtgGathererSearchPage.class, new Browser.BrowsingToPageAction(NavigationConstant.MTG_GATHERER_SEARCH_PAGE))
-            .assertPageTitle("Gatherer - Magic: The Gathering")
+    public void searchByCardName() {
+        goToMtgGatherer()
             .enterSearchTerm("elf")
             .submitSearch()
             .assertPageTitle("Card Search - Search: +elf - Gatherer - Magic: The Gathering")
-            .assertResultCard(1,"Angelfire Crusader")
+            .assertResultCard(1,"Angelfire Crusader") // Ang-elf-ire
             .assertResultCard(2,"Arbor Elf");
+    }
+
+    @Test
+    public void searchByType() {
+        goToMtgGatherer()
+                .enterSearchTerm("elf")
+                .selectTypeSearch()
+                .submitSearch()
+                .assertResultCard(1,"Advocate of the Beast");
+    }
+
+    private MtgGathererSearchPage goToMtgGatherer() {
+        return Browser.goTo(MtgGathererSearchPage.class, new Browser.BrowsingToPageAction(NavigationConstant.MTG_GATHERER_SEARCH_PAGE))
+                .assertPageTitle("Gatherer - Magic: The Gathering");
     }
 }
