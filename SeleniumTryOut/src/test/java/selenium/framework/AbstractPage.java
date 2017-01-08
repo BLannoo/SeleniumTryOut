@@ -27,8 +27,7 @@ public abstract class AbstractPage<T extends AbstractPage> {
         return self();
     }
 
-    public void waitTillOnPage(WebDriver driver) {
-        WebDriverWait webDriverWait = new WebDriverWait(driver, Browser.TIME_OUT_IN_SECONDS_WHEN_WAITING_FOR_DRIVER);
+    public void waitTillOnPage(WebDriverWait webDriverWait) {
         webDriverWait.until(ExpectedConditions.urlToBe(navigationConstant.getUrl()));
     }
 }

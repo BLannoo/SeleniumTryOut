@@ -6,6 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import selenium.framework.pageAccessAction.PageAccessAction;
 
 public class Browser {
@@ -29,9 +30,14 @@ public class Browser {
     public static <PAGE extends AbstractPage<PAGE>> PAGE goTo(Class<PAGE> pageClass, PageAccessAction pageAccessAction) {
         pageAccessAction.execute();
         PAGE page = createInstanceOfPage(pageClass);
-        page.waitTillOnPage(driver);
+        waitTillOnPage(page);
         initWebElements(page);
         return page;
+    }
+
+    private static <PAGE extends AbstractPage<PAGE>> void waitTillOnPage(PAGE page) {
+        WebDriverWait webDriverWait = new WebDriverWait(driver, TIME_OUT_IN_SECONDS_WHEN_WAITING_FOR_DRIVER);
+        page.waitTillOnPage(webDriverWait);
     }
 
     private static <PAGE extends AbstractPage<PAGE>> void initWebElements(PAGE page) {
