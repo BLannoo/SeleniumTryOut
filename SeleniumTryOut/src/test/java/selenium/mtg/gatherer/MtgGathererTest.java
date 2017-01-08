@@ -22,9 +22,11 @@ public class MtgGathererTest extends WebDriverTest {
     public void searchByType() {
         goToMtgGatherer()
                 .enterSearchTerm("elf")
-                .selectTypeSearch()
+                .toggleTypeSearch()
+                .toggleNameSearch()
                 .submitSearch()
-                .assertResultCard(1,"Advocate of the Beast");
+                .assertResultCard(1,"Advocate of the Beast")
+                .assertResultCard(4,"Arbor Elf");
     }
 
     private MtgGathererSearchPage goToMtgGatherer() {
