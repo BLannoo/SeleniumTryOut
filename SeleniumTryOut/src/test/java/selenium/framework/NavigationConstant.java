@@ -1,4 +1,4 @@
-package selenium;
+package selenium.framework;
 
 public enum NavigationConstant {
     MTG_STOCKS_HOME_PAGE("http://www.mtgstocks.com/"),

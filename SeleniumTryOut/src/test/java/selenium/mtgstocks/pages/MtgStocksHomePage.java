@@ -4,10 +4,10 @@ import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import selenium.AbstractPage;
-import selenium.Browser;
-import selenium.NavigationConstant;
-import selenium.pageAccessAction.ClickToAccessPageAction;
+import selenium.framework.AbstractPage;
+import selenium.framework.Browser;
+import selenium.framework.NavigationConstant;
+import selenium.framework.pageAccessAction.ClickToAccessPageAction;
 
 public class MtgStocksHomePage extends AbstractPage<MtgStocksHomePage> {
 

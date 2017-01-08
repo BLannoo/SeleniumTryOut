@@ -1,4 +1,4 @@
-package selenium.pageAccessAction;
+package selenium.framework.pageAccessAction;
 
 import org.openqa.selenium.WebElement;
 

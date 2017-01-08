@@ -1,4 +1,4 @@
-package selenium;
+package selenium.framework;
 
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
