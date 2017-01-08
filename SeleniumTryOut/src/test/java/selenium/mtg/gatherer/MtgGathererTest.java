@@ -29,6 +29,15 @@ public class MtgGathererTest extends WebDriverTest {
                 .assertResultCard(4,"Arbor Elf");
     }
 
+    @Test
+    public void searchInSetCommander2014() {
+        goToMtgGatherer()
+                .enterSearchTerm("elf")
+                .selectSet("Commander 2014")
+                .submitSearch()
+                .assertResultCard(1,"Farhaven Elf");
+    }
+
     private MtgGathererSearchPage goToMtgGatherer() {
         return Browser.goTo(MtgGathererSearchPage.class, new Browser.BrowsingToPageAction(NavigationConstant.MTG_GATHERER_SEARCH_PAGE))
                 .assertPageTitle("Gatherer - Magic: The Gathering");

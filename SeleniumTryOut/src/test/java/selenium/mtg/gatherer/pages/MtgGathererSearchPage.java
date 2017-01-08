@@ -1,7 +1,9 @@
 package selenium.mtg.gatherer.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 import selenium.framework.AbstractPage;
 import selenium.framework.Browser;
 import selenium.framework.NavigationConstant;
@@ -20,6 +22,9 @@ public class MtgGathererSearchPage extends AbstractPage<MtgGathererSearchPage> {
 
     @FindBy(xpath = "//label[@for='ctl00_ctl00_MainContent_Content_SearchControls_SearchCardName']")
     private WebElement nameSearchCheckBox;
+
+    @FindBy(id = "ctl00_ctl00_MainContent_Content_SearchControls_setAddText")
+    private WebElement setsDropDownFilter;
 
     public MtgGathererSearchPage() {
         super(NavigationConstant.MTG_GATHERER_SEARCH_PAGE);
@@ -43,6 +48,11 @@ public class MtgGathererSearchPage extends AbstractPage<MtgGathererSearchPage> {
 
     public MtgGathererSearchPage toggleNameSearch() {
         nameSearchCheckBox.click();
+        return self();
+    }
+
+    public MtgGathererSearchPage selectSet(String set) {
+        new Select(setsDropDownFilter).selectByValue(set);
         return self();
     }
 }
