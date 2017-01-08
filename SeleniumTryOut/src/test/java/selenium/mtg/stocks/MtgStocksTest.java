@@ -1,10 +1,10 @@
-package selenium.mtgstocks;
+package selenium.mtg.stocks;
 
 import org.junit.Test;
 import selenium.framework.Browser;
 import selenium.framework.NavigationConstant;
 import selenium.framework.WebDriverTest;
-import selenium.mtgstocks.pages.MtgStocksHomePage;
+import selenium.mtg.stocks.pages.MtgStocksHomePage;
 
 public class MtgStocksTest extends WebDriverTest {
 

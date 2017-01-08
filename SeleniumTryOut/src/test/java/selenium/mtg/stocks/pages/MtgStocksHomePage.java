@@ -1,4 +1,4 @@
-package selenium.mtgstocks.pages;
+package selenium.mtg.stocks.pages;
 
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;

@@ -11,7 +11,7 @@ public abstract class AbstractPage<T extends AbstractPage> {
 
     private final NavigationConstant navigationConstant;
 
-    @FindBy(xpath = "//title")
+    @FindBy(xpath = "/html/head/title")
     private WebElement titleElement;
 
     public AbstractPage(NavigationConstant navigationConstant) {
