@@ -9,30 +9,30 @@ import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Browser {
+class Browser {
 
-    public static final int TIME_OUT_IN_SECONDS_WHEN_WAITING_FOR_DRIVER = 10;
+    private static final int TIME_OUT_IN_SECONDS_WHEN_WAITING_FOR_DRIVER = 10;
 
     private static WebDriver driver;
 
-    public static void setUp() {
+    static void setUp() {
         FirefoxDriverManager.getInstance().setup();
     }
 
-    public static void open() {
+    static void open() {
         driver = new FirefoxDriver();
     }
 
-    public static void close() {
+    static void close() {
         driver.quit();
     }
 
-    public static void waitUntill(ExpectedCondition<Boolean> condition) {
+    static void waitUntill(ExpectedCondition<Boolean> condition) {
         new WebDriverWait(driver, TIME_OUT_IN_SECONDS_WHEN_WAITING_FOR_DRIVER)
                 .until(condition);
     }
 
-    public static void browseTo(NavigationConstant navigationConstant) {
+    static void browseTo(NavigationConstant navigationConstant) {
         driver.get(navigationConstant.getUrlRegex());
     }
 

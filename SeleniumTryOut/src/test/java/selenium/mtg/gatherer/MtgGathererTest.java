@@ -1,7 +1,6 @@
 package selenium.mtg.gatherer;
 
 import org.junit.Test;
-import selenium.framework.Browser;
 import selenium.framework.NavigationConstant;
 import selenium.framework.WebDriverTest;
 import selenium.mtg.gatherer.pages.MtgGathererSearchPage;
@@ -39,7 +38,7 @@ public class MtgGathererTest extends WebDriverTest {
     }
 
     private MtgGathererSearchPage goToMtgGatherer() {
-        Browser.browseTo(NavigationConstant.MTG_GATHERER_SEARCH_PAGE);
+        browseTo(NavigationConstant.MTG_GATHERER_SEARCH_PAGE);
         return new MtgGathererSearchPage()
                 .assertPageTitle("Gatherer - Magic: The Gathering");
     }

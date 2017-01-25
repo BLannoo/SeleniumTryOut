@@ -20,4 +20,8 @@ public class WebDriverTest {
     public void tearDown() {
         Browser.close();
     }
+
+    protected void browseTo(NavigationConstant mtgStocksHomePage) {
+        Browser.browseTo(mtgStocksHomePage);
+    }
 }

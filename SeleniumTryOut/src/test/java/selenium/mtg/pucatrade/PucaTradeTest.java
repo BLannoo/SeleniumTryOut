@@ -1,7 +1,6 @@
 package selenium.mtg.pucatrade;
 
 import org.junit.Test;
-import selenium.framework.Browser;
 import selenium.framework.NavigationConstant;
 import selenium.framework.WebDriverTest;
 import selenium.mtg.pucatrade.pages.PucaTradeSearchPage;
@@ -10,7 +9,7 @@ public class PucaTradeTest extends WebDriverTest {
 
     @Test
     public void searchByCardName() {
-        Browser.browseTo(NavigationConstant.MTG_PUCATRADE_SEARCH_PAGE);
+        browseTo(NavigationConstant.MTG_PUCATRADE_SEARCH_PAGE);
         new PucaTradeSearchPage()
             .assertPageTitle("MTG Card Search | PucaTrade - Trade Magic: The Gathering Cards Online")
             .enterSearchTerm("elf")
