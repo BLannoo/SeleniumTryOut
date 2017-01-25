@@ -39,7 +39,8 @@ public class MtgGathererTest extends WebDriverTest {
     }
 
     private MtgGathererSearchPage goToMtgGatherer() {
-        return Browser.goTo(MtgGathererSearchPage.class, new Browser.BrowsingToPageAction(NavigationConstant.MTG_GATHERER_SEARCH_PAGE))
+        Browser.browseTo(NavigationConstant.MTG_GATHERER_SEARCH_PAGE);
+        return new MtgGathererSearchPage()
                 .assertPageTitle("Gatherer - Magic: The Gathering");
     }
 }

@@ -14,6 +14,8 @@ public abstract class AbstractPage<T extends AbstractPage> {
 
     public AbstractPage(NavigationConstant navigationConstant) {
         this.navigationConstant = navigationConstant;
+        waitTillOnPage();
+        Browser.initWebElements(this);
     }
 
     protected T self() {
@@ -25,7 +27,7 @@ public abstract class AbstractPage<T extends AbstractPage> {
         return self();
     }
 
-    public void waitTillOnPage() {
+    private void waitTillOnPage() {
         Browser.waitUntill(ExpectedConditions.urlMatches(navigationConstant.getUrlRegex()));
     }
 }

@@ -4,9 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import selenium.framework.AbstractPage;
-import selenium.framework.Browser;
 import selenium.framework.NavigationConstant;
-import selenium.framework.pageAccessAction.ClickToAccessPageAction;
 
 public class MtgGathererSearchPage extends AbstractPage<MtgGathererSearchPage> {
 
@@ -36,8 +34,8 @@ public class MtgGathererSearchPage extends AbstractPage<MtgGathererSearchPage> {
     }
 
     public MtgGathererResultPage submitSearch() {
-        ClickToAccessPageAction submitSearchAction = new ClickToAccessPageAction(submitButton);
-        return Browser.goTo(MtgGathererResultPage.class, submitSearchAction);
+        submitButton.click();
+        return new MtgGathererResultPage();
     }
 
     public MtgGathererSearchPage toggleTypeSearch() {
