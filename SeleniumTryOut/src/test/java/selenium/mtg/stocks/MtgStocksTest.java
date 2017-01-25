@@ -27,6 +27,6 @@ public class MtgStocksTest extends WebDriverTest {
         Browser.goTo(MtgStocksHomePage.class, new Browser.BrowsingToPageAction(NavigationConstant.MTG_STOCKS_HOME_PAGE))
                 .goToSetsPage()
                 .assertPageTitle("Sets - MTGStocks.com")
-                .assertNumberOfSets(169);
+                .assertNumberOfSets(170);
     }
 }

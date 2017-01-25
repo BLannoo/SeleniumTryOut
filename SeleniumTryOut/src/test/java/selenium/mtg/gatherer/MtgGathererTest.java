@@ -26,7 +26,7 @@ public class MtgGathererTest extends WebDriverTest {
                 .toggleNameSearch()
                 .submitSearch()
                 .assertResultCard(1,"Advocate of the Beast")
-                .assertResultCard(4,"Arbor Elf");
+                .assertResultCard(6,"Arbor Elf");
     }
 
     @Test
