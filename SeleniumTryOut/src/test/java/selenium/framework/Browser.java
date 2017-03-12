@@ -1,6 +1,5 @@
 package selenium.framework;
 
-import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -16,7 +15,7 @@ class Browser {
     private static WebDriver driver;
 
     static void setUp() {
-        FirefoxDriverManager.getInstance().setup();
+        System.setProperty("webdriver.gecko.driver", "src/test/resource/geckodriver");
     }
 
     static void open() {
